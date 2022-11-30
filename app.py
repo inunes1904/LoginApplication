@@ -134,10 +134,10 @@ def register():
 
 # Cria a rota para o Chat
 @sanitizar
-@app.route("/chat")
 # Decorador que inviabiliza o acesso à view sem 
 # ser um utilizador logado
-@login_necessario
+@app.route("/chat")
+@login_necessario 
 def chat():
     # Renderiza a Template Chat.html
     return render_template('chat.html')

@@ -20,7 +20,7 @@ def login_necessario(f):
 def criar_session(user):
     session['utilizador'] = user.username 
     session['nome'] = user.nome
-    print(session)
+    
 
 # Esta funcao apaga a sessao e todos os seus cookies  
 def apagar_session():
