@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="col d-flex justify-content-center paddingBottomMessages">
+        <div class="container d-flex align-items-center flex-column">
+            <img class="shadow-hover masthead-avatar mb-5" src="{{url_for('static', filename='img/ivoavatarred.svg') }}" />
+            <h1 class="shadow-hover text-uppercase mb-0 redmsg">ERRO 404</h1>
+            <div class="shadow-hover divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star redmsg"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <p class="masthead-subheading font-weight-light mb-0">O CAMINHO QUE INTRODUZIU NÃO EXISTE.</p>
+            <p class="masthead-subheading font-weight-light mb-0">OU ENCONTRA-SE INACESSÍVEL.</p>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center paddingBottomIndex">
+        <div class="col-lg-3">
+    {% for message in get_flashed_messages() %}
+    {% if message == 'Utilizador adicionado com sucesso.' %}
+        <div class="alert alert-success"> 
+    {% else %}
+        <div class="alert alert-danger"> 
+    {% endif %}
+       
+    {{ message }}
+     </div>
+   {% endfor %}
+    </div>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="col d-flex justify-content-center paddingBottomMessages">
+        <div class="card col-lg-3">
+            <div class="card-header bg-dark" style="text-align: center;">
+                <b style="color:white; "><h4>Login</h4></b> 
+            </div>
+            <form action="{{ url_for('login') }}" method="post"class="card-body">         
+                <div class="row form-margins-add">
+                    <label for="username"> <i class="fa-solid fa-user"></i></i>&emsp;Username:</label>
+                    <input type="text" required id="username" name="username">
+                </div>
+                <div class="row form-margins-add">
+                    <label for="password"><i class="fa-sharp fa-solid fa-key"></i>&emsp;Pasword:</label>
+                    <input type="password" id="password" required label="Password" name="password">
+                </div>
+                <div class="paddingTopbtn form-margins-add">
+                    <input type="checkbox" label="remember"> <label for="remember">Lembrar-me</label>
+                </div>
+                    <div class="paddingTopbtn form-margins-add">
+                    <button  type="submit" class="btn btn-dark">Login</button>
+                    <a href="{{ url_for('register') }}" type="button" class="btn btn-outline-dark">Criar Conta</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="col d-flex justify-content-center paddingBottomIndex">
+        <div class="col-lg-3">
+    {% for message in get_flashed_messages() %}
+    {% if message == 'Utilizador adicionado com sucesso.' %}
+        <div class="alert alert-success"> 
+    {% else %}
+        <div class="alert alert-danger"> 
+    {% endif %}
+       
+    {{ message }}
+     </div>
+   {% endfor %}
+    </div>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

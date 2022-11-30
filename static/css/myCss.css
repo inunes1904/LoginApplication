@@ -1,0 +1,151 @@
+.paddingBottom{
+    padding-bottom: 60px;
+
+}
+
+
+.paddingBottomMessages{
+    padding-bottom: 15px;
+
+}
+
+
+.paddingBottomChat{
+    padding-bottom: 185px;
+
+}
+
+footer {
+    position:absolute;
+   bottom:0;
+   width:100%;
+}
+
+.paddingBottomRegister{
+    padding-bottom: 75px;
+
+}
+.paddingTopbtn{
+    padding-top: 10px;
+}
+
+.floatRight{
+    text-align: right;
+
+}
+.floaLeft{
+    text-align: left;
+}
+
+body{
+    background-color:#475d62;
+    font-family: Kanit;
+}
+
+.form-margins-add{
+    margin-left: 20px; 
+    margin-right:20px;
+}
+
+.utilizadorRight{
+    width: 85%;
+    text-align: right;
+    
+}
+
+  .divider-custom {
+    margin: 1.25rem 0 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .divider-custom .divider-custom-line {
+    width: 100%;
+    max-width: 7rem;
+    height: 0.25rem;
+    background-color: #2c3e50;
+    border-radius: 1rem;
+    border-color: #2c3e50;
+  }
+  .divider-custom .divider-custom-line:first-child {
+    margin-right: 1rem;
+  }
+  .divider-custom .divider-custom-line:last-child {
+    margin-left: 1rem;
+  }
+  .divider-custom .divider-custom-icon {
+    color: #2c3e50;
+    font-size: 2rem;
+  }
+  
+  .divider-custom.divider-light .divider-custom-icon {
+    color: #fff;
+  }
+
+
+  #mainNav {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  #mainNav .navbar-brand {
+    color: #fff;
+  }
+
+  #mainNav .navbar-nav li.nav-item a.nav-link {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  #mainNav .navbar-nav li.nav-item a.nav-link:hover {
+    color: #1abc9c;
+  }
+  #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
+    color: #fff;
+  }
+  #mainNav .navbar-nav li.nav-item a.nav-link.active {
+    
+    color: #1abc9c;
+  }
+  #mainNav .navbar-toggler {
+    font-size: 80%;
+    padding: 0.8rem;
+  }
+
+ .masthead-avatar {
+    width: 325px;
+  }
+
+.masthead-subheading {
+    color:white;
+    border-color: #2c3e50;
+    font-size: 1.1rem;
+}
+.text-uppercase{
+    color:white;
+    border-color: #2c3e50;
+}
+
+.shadow-hover:hover{
+    filter: drop-shadow(5px 5px 5px #222);
+           
+}
+
+.redmsg{
+  color: rgb(112,0,0)
+}
+
+.paddingTopWarnings{
+  padding-top: 3 px;
+}
+
+.paddingTopWarnings p{
+  padding-top: 3 px;
+  margin: 3px 0 0 0;
+}
+
+.warningIcon{
+  color: red
+}
+.warningIcon:hover{
+  color: rgb(255, 144, 144)
+}

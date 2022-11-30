@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+    {% block content %}
+    <div class="col d-flex justify-content-center paddingBottomMessages">
+        <div class="card col-lg-4">
+            <div class="card-header bg-dark" style="text-align: center;">
+                <b style="color:white;"><h4>Registo de utilizador</h4></b> 
+            </div>
+            <form action="{{ url_for('register') }}" method="POST" id="myForm" onsubmit="return validarForm()" name="myForm" class="card-body">
+                <div class="row form-margins-add">
+                    <label for="Nome"><i class="fa-solid fa-face-smile"></i>&emsp;Nome:</label>
+                    <input type="text" id="nome" required placeholder="Digite o seu primeiro e ultimo nome" name="nome">
+                </div>
+                <div class="row form-margins-add">
+                    <label for="email"><i class="fa-solid fa-at"></i>&emsp;Email:</label>
+                    <input type="text" id="email" placeholder="Digite o seu email" required name="email">
+                </div>
+                <div class="row form-margins-add">
+                    <label for="username"><i class="fa-solid fa-user-shield"></i>&emsp;Username:</label>
+                    <input type="text" required name="username" placeholder="Digite o nome de utilizador" id="username">
+                </div>
+                <div class="row form-margins-add">
+                    <label for="password"><i class="fa-solid fa-lock"></i>&emsp;Pasword:</label>
+                    <input type="password" id="password" required placeholder="Digite a sua password" label="Password" name="password">
+                </div>
+                <div class="row form-margins-add">
+                    <label for="password2"><i class="fa-solid fa-lock"></i>&emsp;Confirmar Password:</label>
+                    <input type="password" id="password2" placeholder="Digite a sua password novamente" required name="password2">
+                </div>
+                <div class="paddingTopbtn form-margins-add">
+                    <button type="submit" class="btn btn-dark">Registar</button>
+                    <a href="{{ url_for('index') }}" type="button" class="btn btn-outline-dark">Voltar ao Login</a>
+                </div>
+
+                <div id="divdasdivs" class="paddingTopWarnings form-margins-add">
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center paddingBottomRegister">
+        <div class="col-lg-4">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger"> 
+    {{ message }}
+     </div>
+   {% endfor %}
+    </div>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    {% endblock  %}

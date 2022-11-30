@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="col d-flex justify-content-center paddingBottomChat" >
+    <div class="card col-lg-8">
+      <div class="card-header bg-dark" style="text-align: center;">
+        <b style="color:white; "><h4>Chat Secreto</h4></b> 
+    </div>
+    <div class="wrapper">
+          <div class="setuser">
+            <p>Bem-Vindo! Escolhe o teu username para o chat secreto.</p>
+            <div class="wrapper">
+              <input class="username " type="text" maxlength=20 placeholder="Inserir nome para o chat"/>&emsp;<button class="btn btn-secondary">Confirmar</button>
+            </div>
+          </div>
+          <div class="dim"></div>
+          <div class="chat" style="overflow-y: scroll; height:480px;">
+            <div class="reminder">Lembra-te de seres simpático para os outros&hellip;</div>
+            <div class="chatbox">
+              <div class="messages-wrapper">
+                <div class="status">Á Procura de uma pessoa para falares...</div>
+              </div>
+            </div>
+            <div class="reply">
+              <div class="typing"></div>
+              <div class="wrapper">
+                <input class="usermsg col-lg-12" type="text" placeholder="escreve a tua mensagem" disabled/>
+                <hr>
+                <button class="send btn btn-secondary">Enviar mensagem</button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock content %}

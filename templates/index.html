@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="col d-flex justify-content-center paddingBottomMessages">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <img class="shadow-hover masthead-avatar mb-5" src="{{url_for('static', filename='img/ivoavatar.svg') }}" />
+            <!-- Masthead Heading-->
+            <h1 class="shadow-hover text-uppercase mb-0">Ivo Nunes</h1>
+            <!-- Icon Divider-->
+            <div class="shadow-hover divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="masthead-subheading font-weight-light mb-0">3ºANO GSC - ALUNO - Nº20202567</p>
+        </div>
+    </div>
+
+
+    <div class="col d-flex justify-content-center paddingBottomIndex">
+        <div class="col-lg-3">
+    {% for message in get_flashed_messages() %}
+    {% if message == 'Utilizador adicionado com sucesso.' %}
+        <div class="alert alert-success"> 
+    {% else %}
+        <div class="alert alert-danger"> 
+    {% endif %}
+       
+    {{ message }}
+     </div>
+   {% endfor %}
+    </div>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!-- 
+  Esta página HTML acaba por ser o Pai de todas as outras Utilizando assim um dos principais 
+          principios da Programacao que é DRY (Don't Repeat Yourself)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Login Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myCss.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/svg+xml" href="{{url_for('static', filename='img/favicon.svg')}}" />
+  </head>
+<body>
+    <div class="paddingBottom">
+      <nav id ="mainNav" class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+          <div style="height:auto; width:160px;">
+          <a class="navbar-brand"  href="{{url_for('index')}}"><img style="height:auto; width:95%;" src="{{url_for('static', filename='img/uatla.png') }}"></a>
+        </div>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <!-- Se não existir uma sessao criada mostra o botao Login -->
+                {% if not session['utilizador'] %}
+                <a href="{{url_for('login')}}" class="nav-link" href="javascript:void(0)">&emsp;Login</a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                <!-- Se existir uma sessao criada mostra o botao Chat -->
+                {% if session['utilizador'] %}
+                <a href="{{url_for('chat')}}" class="nav-link" href="javascript:void(0)">&emsp;Chat</a>
+                {% endif %}
+              </li>
+            
+            </ul>
+            <form class="d-flex">
+               <!-- Se existir uma sessao criada mostra o nome da pessoa e o botao Sair -->
+              {% if session['utilizador'] %}
+              <a style="color:white; top: 50%;  -ms-transform: translateY(20%); transform: translateY(20%);"><small>Seja bem-vindo, {{  session['nome'] }}</small>&emsp;</a>
+              <a class="btn btn-outline-light btn-floating m-1 " href="{{ url_for('logout')}}"><i  class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </nav>
+  </div>
+   
+    {% block content %}
+
+    <!-- Todas as outras paginas extenderao esta e sera aqui adicionado o conteudo das mesmas -->
+
+    {% endblock  %}
+
+<footer class="bg-dark text-center text-white">
+
+  <div class="container p-4">
+
+    <section class="mb-4">
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/nunes_ivo" target="_blank" role="button">
+        <i class="fab fa-twitter"></i ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/ivo-nunes-30ab1213a/" target="_blank" role="button">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/inunes1904/" target="_blank" role="button">
+        <i class="fab fa-github"></i>
+      </a>
+    </section>
+    <section class="mb-4">
+      <p>
+        Esta aplicação foi desenhada no âmbito da Unidade Curricular Programação de Sistemas Web lecionada pela Professora Doutora Fernanda Passos, 
+        foi um projeto onde utilizei Python, Javascript, Bootstrap, jQuery, Flask e SQLAlchemy.
+        O propósito da WebApp é simular um sistema de Login num contexto Profissional, com limitação de uso de bibliotecas para que possamos desenvolver
+        as nossas capacidades enquanto developers.
+      </p>
+    </section>
+   
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); background-image: url_for('static', filename='')">
+    © 2022 Copyright:
+    <a class="text-white" href="https://ivonunes.herokuapp.com/" target="_blank">Ivo Nunes</a>
+  </div>
+
+</footer>
+</body>
+</html>
