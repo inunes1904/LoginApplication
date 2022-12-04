@@ -15,11 +15,11 @@
                     <input type="password" id="password" required label="Password" name="password">
                 </div>
                 <div class="paddingTopbtn form-margins-add">
-                    <input type="checkbox" label="remember"> <label for="remember">Lembrar-me</label>
+                    <input type="checkbox" id="checkbox" name="checkbox" label="remember" value="False"> <label for="remember">Lembrar-me</label>
                 </div>
                     <div class="paddingTopbtn form-margins-add">
                     <button  type="submit" class="btn btn-dark">Login</button>
-                    <a href="{{ url_for('register') }}" type="button" class="btn btn-outline-dark">Criar Conta</a>
+                    <a href="{{ url_for('register') }}" type="button" class="btn btn-outline-dark" >Criar Conta</a>
                 </div>
             </form>
         </div>
@@ -38,5 +38,5 @@
     </div>
     </div>
 </div>
-<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+<script src="{{ url_for('static', filename='js/registo.js') }}"></script>
 {% endblock %}

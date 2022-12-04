@@ -22,6 +22,13 @@ def criar_session(user):
     session['nome'] = user.nome
     
 
+# Obriga a sessao a tornar-se permanente podendo fechar o browser 
+# e abrir novamente quando entender
+def session_permanente():
+    if session:
+        session.permanent = True
+    
+
 # Esta funcao apaga a sessao e todos os seus cookies  
 def apagar_session():
     session.clear()

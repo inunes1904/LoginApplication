@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="dim"></div>
-          <div class="chat" style="overflow-y: scroll; height:480px;">
+          <div class="chat" id="chattry" style="overflow-y: scroll; height:480px;">
             <div class="reminder">Lembra-te de seres simpático para os outros&hellip;</div>
             <div class="chatbox">
               <div class="messages-wrapper">
@@ -33,4 +33,11 @@
     </div>
 </div>
 <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+<script>
+  // Faz o Scroll automatico do Chat
+  window.setInterval(function() {
+  var elem = document.getElementById('chattry');
+  elem.scrollTop = elem.scrollHeight;
+  }, 3000);
+</script>
 {% endblock content %}

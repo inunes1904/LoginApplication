@@ -1,4 +1,3 @@
-
 import hashlib
 
 # Funcao que recebe a Secret key da App a password e o salt 

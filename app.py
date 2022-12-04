@@ -1,9 +1,8 @@
-
 import random, string
 from flask import (Flask, flash, redirect, escape, render_template, request, url_for)
 from flask_sqlalchemy import SQLAlchemy
 from hash_auth import verificar_passord_hash, hash_password
-from utilitarios import escrever_log, login_necessario, criar_session, apagar_session, sanitizar
+from utilitarios import escrever_log, login_necessario, criar_session, apagar_session, sanitizar,session_permanente
 from markupsafe import escape
 from secrets import secret_app_key
 
@@ -18,11 +17,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///../../aplicacao.db"
 app.config['SECRET_KEY'] = secret_app_key
 # Evita que faça o Seguimento das modificações efetuadas
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Session Permanente comeca a false
+app.config["SESSION_PERMANENT"] = False
+
 
 # Inicializa a aplicaçao com a extensao do SQLAlchemy
 db.init_app(app)
 
-# Criacao do Modelo de Base de Dados 
+# Criacao do Modelo de Utilizador de Base de Dados 
 class Utilizador(db.Model):
     '''Esta Class recebe Username Email Nome e Password o Id é adicionado automaticamente'''
     id = db.Column(db.Integer, primary_key=True)
@@ -76,6 +78,9 @@ def login():
         else:
             # Efetua o Login ao utilizador 
             criar_session(utilizador)
+            # Criar sessao permanente
+            if bool(request.form.get('checkbox')):
+                session_permanente()
             # Retorna para a pagina do Chat
             return redirect(url_for('chat'))
     # Renderiza a Template Login.html
@@ -90,8 +95,7 @@ def register():
     if request.method == "POST":
         # Efetua a geração de 16 caracteres randomicamente que sera o nosso salt
         salt = ''.join(random.choices(string.ascii_letters+string.punctuation, k=16))
-        # Encripta a password com e atribui o valor a variavel
-        # password_encriptada_salt
+        # Encripta a password e atribui o valor a variavel password_encriptada_salt
         password_encriptada_salt = hash_password(
                 # Uma password secreta da aplicaçao e adicionada
                 app.config['SECRET_KEY'],
@@ -113,6 +117,7 @@ def register():
             username=escape(request.form.get('username')),
             # Recebe a password encriptada em cima e atribui o valor ao objecto do modelo da base de dados
             password=password_encriptada_salt,
+            # Recebe o salte atribui o valor ao objecto do modelo da base de dados
             salt = salt
         )   
         try:  
@@ -125,6 +130,7 @@ def register():
             return redirect(url_for('login'))
         # caso nao seja possivel adicionar significa que o utilizador ja existe
         except Exception as e:
+            # Caso aconteça um problea escreve o log
             escrever_log(e)
             flash("O email ou username já existem, tenta novamente.")
             return redirect(url_for('register'))
@@ -157,6 +163,7 @@ def invalid_route(e):
     return render_template('error404.html')
 
 # Inicia a aplicação sem ser necessario utilizar o terminal para o efeito
+# SSL_CONTEXT envia os certificados para poder utilizar HTTPS
 if __name__ == '__main__':
     app.run( ssl_context=('certifications/localhost.crt', 'certifications/localhost.key') )
     
