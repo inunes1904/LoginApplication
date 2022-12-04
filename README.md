@@ -1,7 +1,5 @@
 # LoginApplication
 
-Este projecto foi um projecto realizado na Cadeira de Programação de Sistemas Web 
-
 Esta aplicação foi desenhada no âmbito da Unidade Curricular Programação de Sistemas 
 Web lecionada  pela Professora Doutora Fernanda Passos, foi um projeto onde utilizei 
 Python, Javascript, Bootstrap, jQuery, Flask e SQLAlchemy.

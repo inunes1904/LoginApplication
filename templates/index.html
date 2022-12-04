@@ -17,22 +17,5 @@
         </div>
     </div>
 
-
-    <div class="col d-flex justify-content-center paddingBottomIndex">
-        <div class="col-lg-3">
-    {% for message in get_flashed_messages() %}
-    {% if message == 'Utilizador adicionado com sucesso.' %}
-        <div class="alert alert-success"> 
-    {% else %}
-        <div class="alert alert-danger"> 
-    {% endif %}
-       
-    {{ message }}
-     </div>
-   {% endfor %}
-    </div>
-    </div>
-</div>
-
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 {% endblock %}
