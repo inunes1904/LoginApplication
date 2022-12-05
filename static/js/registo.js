@@ -1,8 +1,12 @@
 // Previne o comportamento default da form que seria o submit
 $("#myForm").submit(function(event){
     event.preventDefault()
-    //valida a form
-    validarForm()
+    // valida a form e recebe a resposta da funcao
+    var result =  validarForm()
+    // se for valida a form e submetida para o backend
+    if (result == true) {
+        $("#myForm").submit()
+    }
   });
 
 // Funcao que permite validar o formulario de Registo
@@ -24,14 +28,13 @@ function validarForm(){
             { 
                 // Verifica Se o email esta valido
                 if (email.match(emailStrongRegex)){
-                    $("myForm").submit();
-                    return True;
+                    return true;
                 }else{         
                     // Escreve nas divs os Erros        
                     $("#divdasdivs").empty()
                     $("#divdasdivs").append('<p class="warningIcon"><b>Email Errado!</b></p>'
                     +'<p><small><b><i class="fa-solid fa-triangle-exclamation fa-lg warningIcon"></i>&emsp;O email tem de ser válido</b></small></p>')
-                    return False;
+                    return false;
                 }       
             }
             else
@@ -68,7 +71,7 @@ function validarForm(){
                     $("#divdasdivs").append('<p><small><b><i class="fa-solid fa-triangle-exclamation fa-lg warningIcon"></i>&emsp;A password deve conter pelo menos 8 caracters</b></small></p>')
                     
                 }
-                return False;
+                return false;
    
             }
     }else{     
@@ -76,7 +79,7 @@ function validarForm(){
         $("#divdasdivs").empty()
         $("#divdasdivs").append('<p style="color:red;"><b>Password Errada!</b></p>'
         +'<p><small><b><i class="fa-solid fa-triangle-exclamation fa-lg warningIcon"></i>&emsp;As Passwords são diferentes</b></small></p>')
-        return False;
+        return false;
    
     }
   }
